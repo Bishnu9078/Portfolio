@@ -14,9 +14,19 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=6" />
   </head>
-  <body>
+  <body class="is-loading">
+    <div class="page-loader" id="pageLoader" aria-live="polite" aria-label="Portfolio loading">
+      <div class="loader-content">
+        <span class="loader-label">Loading Portfolio</span>
+        <strong id="loaderPercent">0%</strong>
+        <div class="loader-track" aria-hidden="true">
+          <span class="loader-progress" id="loaderProgress"></span>
+        </div>
+      </div>
+    </div>
+
     <header class="site-header">
       <nav class="navbar" aria-label="Primary navigation">
         <a class="brand" href="#home" aria-label="Bishnuprasad Sahoo home">
@@ -47,10 +57,10 @@
         <canvas class="hero-dots" aria-hidden="true"></canvas>
         <div class="hero-content">
           <p class="eyebrow">Hi, I'm Bishnuprasad Sahoo</p>
-          <h1>Full-Stack Developer | Java Backend Developer | Product Development Intern</h1>
+          <h1>Full-Stack Developer & Software Intern</h1>
           <p class="hero-intro">
-            Computer Science student with strong foundations in Java, web development, REST APIs, and database-driven applications.
-            I build full-stack products with Spring Boot, React, MySQL, and Git-based collaboration.
+            B.Tech Computer and Information Sciences student at Centurion University of Technology and Management, graduating in June 2027.
+            Building scalable full-stack and blockchain-focused solutions as a Software Developer Intern at Prustaz Technologies.
           </p>
           <div class="hero-actions">
             <a class="btn primary" href="#projects">View Projects</a>
@@ -67,7 +77,7 @@
                 <path d="M6.94 8.98H3.76v10.25h3.18V8.98ZM5.35 4a1.85 1.85 0 1 0 0 3.7 1.85 1.85 0 0 0 0-3.7Zm13.9 9.58c0-3.08-1.64-4.51-3.83-4.51a3.31 3.31 0 0 0-3 1.65h-.04V8.98H9.34v10.25h3.17v-5.07c0-1.34.25-2.63 1.91-2.63 1.64 0 1.66 1.53 1.66 2.72v4.98h3.17v-5.65Z" />
               </svg>
             </a>
-            <a href="mailto:bishnuprasadsahoo590@gmail.com" aria-label="Send email" title="Email">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bishnuprasadsahoo590%40gmail.com" aria-label="Compose email in Gmail" title="Gmail" target="_blank" rel="noreferrer">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4.75 5.5h14.5c1.1 0 2 .9 2 2v9c0 1.1-.9 2-2 2H4.75c-1.1 0-2-.9-2-2v-9c0-1.1.9-2 2-2Zm.32 2 6.93 5 6.93-5H5.07Zm14.18 9V9.39l-6.67 4.82a1 1 0 0 1-1.16 0L4.75 9.39v7.11h14.5Z" />
               </svg>
@@ -87,11 +97,14 @@
 
       <section class="section-shell about-grid" id="about">
         <div class="section-copy">
-          <p class="eyebrow">About Me</p>
           <h2>Full-stack developer focused on reliable, user-ready products.</h2>
           <p>
-            I am a motivated Computer Science student experienced in building full-stack applications using Spring Boot, React, and MySQL.
-            I enjoy designing clean APIs, managing database workflows, debugging practical problems, and collaborating with teams through Git.
+            Pursuing a BTech in Computer and Information Sciences at Centurion University of Technology and Management, expected to graduate in June 2027.
+            Gained academic knowledge and practical skills in full stack development, with certifications in Full Stack Development from Code For Success &amp; Sheriyan Coding School.
+          </p>
+          <p>
+            Currently contributing as a Software Developer Intern at Prustaz Technologies, working on real-world projects involving modern technologies such as blockchain.
+            Committed to learning and solving complex problems while collaborating with teams to build scalable and impactful solutions.
           </p>
         </div>
         <div class="section-copy">
@@ -116,30 +129,9 @@
         </div>
       </section>
 
-      <section class="stats section-shell" aria-label="Quick stats">
-        <article>
-          <strong>2</strong>
-          <span>Major Full-Stack Projects</span>
-        </article>
-        <article>
-          <strong>2</strong>
-          <span>Certifications</span>
-        </article>
-        <article>
-          <strong>6+</strong>
-          <span>Hackathons</span>
-        </article>
-        <article>
-          <strong>150+</strong>
-          <span>DSA Problems Solved</span>
-        </article>
-      </section>
-
       <section class="section-shell" id="skills">
         <div class="section-heading">
-          <p class="eyebrow">Skills</p>
           <h2>Technical toolkit</h2>
-          <p>Core technologies from my resume, organized for quick recruiter scanning.</p>
         </div>
         <div class="skill-grid">
           <article class="skill-card">
@@ -161,15 +153,21 @@
             </div>
           </article>
           <article class="skill-card">
-            <h3>Cloud</h3>
+            <h3>CoreSkills</h3>
             <div class="tags">
               <span>OOP</span><span>Data Structures</span><span>Problem Solving</span><span>Agile Development</span>
             </div>
           </article>
           <article class="skill-card">
+            <h3>Architecture & AI</h3>
+            <div class="tags">
+              <span>System Design</span><span>Generative AI</span>
+            </div>
+          </article>
+          <article class="skill-card">
             <h3>Tools</h3>
             <div class="tags">
-              <span>Git</span><span>GitHub</span><span>Postman</span><span>VS Code</span><span>Spring Tool Suite</span>
+              <span>Git</span><span>GitHub</span><span>Postman</span><span>VS Code</span><span>Spring Tool Suite</span> <span>IntelliJ IDEA</span>
             </div>
           </article>
         </div>
@@ -177,7 +175,6 @@
 
       <section class="section-shell" id="experience">
         <div class="section-heading">
-          <p class="eyebrow">Experience</p>
           <h2>Academic development experience</h2>
         </div>
         <div class="timeline">
@@ -210,8 +207,7 @@
 
       <section class="section-shell" id="projects">
         <div class="section-heading">
-          <p class="eyebrow">Featured Projects</p>
-          <h2>Full-stack projects with practical product flows</h2>
+          <h2>Featured Projects</h2>
         </div>
         <div class="project-grid">
           <article class="project-card">
@@ -232,32 +228,11 @@
               <div class="project-links"><a href="https://github.com/CodeWithRites/Competitive_Coding_Platform.git" target="_blank" rel="noreferrer">GitHub Repository</a></div>
             </div>
           </article>
-          <article class="project-card">
-            <div class="project-image health"></div>
-            <div class="project-body">
-              <h3>Portfolio Website</h3>
-              <p>Professional portfolio website structured for placements, internships, resume download, project visibility, and recruiter-friendly scanning.</p>
-              <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-              <div class="project-links"><a href="#home">View Site</a><a href="https://github.com/Bishnu9078" target="_blank" rel="noreferrer">GitHub Profile</a></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-shell" id="certifications">
-        <div class="section-heading">
-          <p class="eyebrow">Certifications</p>
-          <h2>Proof of learning</h2>
-        </div>
-        <div class="cert-row">
-          <article><h3>MERN Stack Full Stack Development</h3><p>Sheriyan Coding School</p><span class="cert-status">Completed</span></article>
-          <article><h3>Java Full Stack Development</h3><p>Code For Success | Spring Boot</p><span class="cert-status">Completed</span></article>
         </div>
       </section>
 
       <section class="section-shell" id="achievements">
         <div class="section-heading">
-          <p class="eyebrow">Achievements</p>
           <h2>Beyond code</h2>
         </div>
         <div class="achievement-grid">
@@ -265,13 +240,12 @@
           <article>150+ DSA Problems Solved</article>
           <article>Media Team Member - Yoga Club</article>
           <article>University Event Host and Anchor</article>
-          <article>HR Team Member - Future Wallet</article>
+          <article>HR Team Member - NidhiSetu Innovations Pvt.Ltd.</article>
         </div>
       </section>
 
       <section class="section-shell contact-grid" id="contact">
         <div>
-          <p class="eyebrow">Contact</p>
           <h2>Let's connect for opportunities and collaborations.</h2>
           <div class="contact-list">
             <a href="mailto:bishnuprasadsahoo590@gmail.com">bishnuprasadsahoo590@gmail.com</a>
@@ -289,21 +263,25 @@
                 <path d="M6.94 8.98H3.76v10.25h3.18V8.98ZM5.35 4a1.85 1.85 0 1 0 0 3.7 1.85 1.85 0 0 0 0-3.7Zm13.9 9.58c0-3.08-1.64-4.51-3.83-4.51a3.31 3.31 0 0 0-3 1.65h-.04V8.98H9.34v10.25h3.17v-5.07c0-1.34.25-2.63 1.91-2.63 1.64 0 1.66 1.53 1.66 2.72v4.98h3.17v-5.65Z" />
               </svg>
             </a>
-            <a href="mailto:bishnuprasadsahoo590@gmail.com" aria-label="Email" title="Email">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bishnuprasadsahoo590%40gmail.com" aria-label="Compose email in Gmail" title="Gmail" target="_blank" rel="noreferrer">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4.75 5.5h14.5c1.1 0 2 .9 2 2v9c0 1.1-.9 2-2 2H4.75c-1.1 0-2-.9-2-2v-9c0-1.1.9-2 2-2Zm.32 2 6.93 5 6.93-5H5.07Zm14.18 9V9.39l-6.67 4.82a1 1 0 0 1-1.16 0L4.75 9.39v7.11h14.5Z" />
               </svg>
             </a>
           </div>
         </div>
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/ajax/bishnuprasadsahoo590@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New portfolio contact message" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="form-honey" aria-hidden="true" />
           <label>
             Name
-            <input type="text" name="name" placeholder="Your name" required />
+            <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
           </label>
           <label>
             Email
-            <input type="email" name="email" placeholder="your@email.com" required />
+            <input type="email" name="email" placeholder="your@email.com" autocomplete="email" required />
           </label>
           <label>
             Subject
@@ -318,11 +296,12 @@
       </section>
     </main>
 
+    <div class="toast" id="formToast" role="status" aria-live="polite" aria-atomic="true"></div>
+
     <footer class="site-footer">
-      <p>&copy; 2026 Bishnuprasad Sahoo</p>
+      <p>&copy; Bishnuprasad Sahoo</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=6"></script>
   </body>
 </html>
-              

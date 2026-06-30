@@ -1,8 +1,29 @@
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 const contactForm = document.querySelector("#contactForm");
+const formToast = document.querySelector("#formToast");
+const pageLoader = document.querySelector("#pageLoader");
+const loaderPercent = document.querySelector("#loaderPercent");
+const loaderProgress = document.querySelector("#loaderProgress");
 const hero = document.querySelector(".hero");
 const heroDots = document.querySelector(".hero-dots");
+
+if (pageLoader && loaderPercent && loaderProgress) {
+  let progress = 0;
+  const timer = window.setInterval(() => {
+    progress += 1;
+    loaderPercent.textContent = `${progress}%`;
+    loaderProgress.style.width = `${progress}%`;
+
+    if (progress === 100) {
+      window.clearInterval(timer);
+      window.setTimeout(() => {
+        pageLoader.classList.add("done");
+        document.body.classList.remove("is-loading");
+      }, 250);
+    }
+  }, 20);
+}
 
 navToggle.addEventListener("click", () => {
   const isOpen = navLinks.classList.toggle("open");
@@ -16,15 +37,65 @@ navLinks.addEventListener("click", (event) => {
   }
 });
 
-contactForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const form = new FormData(contactForm);
-  const subject = encodeURIComponent(form.get("subject"));
-  const body = encodeURIComponent(
-    `Name: ${form.get("name")}\nEmail: ${form.get("email")}\n\n${form.get("message")}`
-  );
+let toastTimer;
 
-  window.location.href = `mailto:bishnuprasadsahoo590@gmail.com?subject=${subject}&body=${body}`;
+const showToast = (message, type = "success") => {
+  if (!formToast) return;
+
+  formToast.textContent = message;
+  formToast.classList.toggle("error", type === "error");
+  formToast.classList.add("show");
+  window.clearTimeout(toastTimer);
+  toastTimer = window.setTimeout(() => {
+    formToast.classList.remove("show");
+  }, 3600);
+};
+
+contactForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const requiredFields = contactForm.querySelectorAll("[required]");
+  requiredFields.forEach((field) => {
+    field.value = field.value.trim();
+  });
+
+  if (!contactForm.checkValidity()) {
+    contactForm.reportValidity();
+    return;
+  }
+
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton.textContent;
+  submitButton.disabled = true;
+  submitButton.textContent = "Processing...";
+  showToast("Processing...");
+
+  try {
+    const formData = new FormData(contactForm);
+    formData.set("_replyto", formData.get("email"));
+
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(result.message || "Message failed");
+    }
+
+    contactForm.reset();
+    showToast("Successfully sent.");
+  } catch (error) {
+    showToast(error.message || "Message could not be sent. Please try again.", "error");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
 });
 
 if (hero && heroDots) {
